@@ -10,9 +10,9 @@
 // -------------------
 // 1. Show field @ My Account Registration
   
-add_action( 'woocommerce_register_form', 'bbloomer_extra_register_select_field' );
+add_action( 'woocommerce_register_form', 'allan_extra_register_select_field' );
   
-function bbloomer_extra_register_select_field() {
+function allan_extra_register_select_field() {
     
     ?>
   
@@ -31,9 +31,9 @@ function bbloomer_extra_register_select_field() {
 // -------------------
 // 2. Save field on Customer Created action
   
-add_action( 'woocommerce_created_customer', 'bbloomer_save_extra_register_select_field' );
+add_action( 'woocommerce_created_customer', 'allan_save_extra_register_select_field' );
    
-function bbloomer_save_extra_register_select_field( $customer_id ) {
+function allan_save_extra_register_select_field( $customer_id ) {
 if ( isset( $_POST['numero_tel'] ) ) {
         update_user_meta( $customer_id, 'numero_tel', $_POST['numero_tel'] );
 }
@@ -45,11 +45,11 @@ if ( isset( $_POST['fecha_nac'] ) ) {
 // -------------------
 // 3. Display Select Field @ User Profile (admin) and My Account Edit page (front end)
    
-add_action( 'show_user_profile', 'bbloomer_show_extra_register_select_field', 30 );
-add_action( 'edit_user_profile', 'bbloomer_show_extra_register_select_field', 30 ); 
-add_action( 'woocommerce_edit_account_form', 'bbloomer_show_extra_register_select_field', 30 );
+add_action( 'show_user_profile', 'allan_show_extra_register_select_field', 30 );
+add_action( 'edit_user_profile', 'allan_show_extra_register_select_field', 30 ); 
+add_action( 'woocommerce_edit_account_form', 'allan_show_extra_register_select_field', 30 );
    
-function bbloomer_show_extra_register_select_field($user){ 
+function allan_show_extra_register_select_field($user){ 
     
   if (empty ($user) ) {
   $user_id = get_current_user_id();
@@ -75,11 +75,11 @@ function bbloomer_show_extra_register_select_field($user){
 // -------------------
 // 4. Save User Field When Changed From the Admin/Front End Forms
    
-add_action( 'personal_options_update', 'bbloomer_save_extra_register_select_field_admin' );    
-add_action( 'edit_user_profile_update', 'bbloomer_save_extra_register_select_field_admin' );   
-add_action( 'woocommerce_save_account_details', 'bbloomer_save_extra_register_select_field_admin' );
+add_action( 'personal_options_update', 'allan_save_extra_register_select_field_admin' );    
+add_action( 'edit_user_profile_update', 'allan_save_extra_register_select_field_admin' );   
+add_action( 'woocommerce_save_account_details', 'allan_save_extra_register_select_field_admin' );
    
-function bbloomer_save_extra_register_select_field_admin( $customer_id ){
+function allan_save_extra_register_select_field_admin( $customer_id ){
 if ( isset( $_POST['numero_tel'] ) ) {
    update_user_meta( $customer_id, 'numero_tel', $_POST['numero_tel'] );
 }
